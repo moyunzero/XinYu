@@ -5,9 +5,11 @@ import HomeFooter from './components/HomeFooter.vue';
 </script>
 
 <template>
-  <HomeHeader />
-  <HomeContent />
-  <HomeFooter />
+  <div>
+    <HomeHeader />
+    <HomeContent />
+    <HomeFooter />
+  </div>
 </template>
 
 <style>

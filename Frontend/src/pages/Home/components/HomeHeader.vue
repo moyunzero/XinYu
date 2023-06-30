@@ -17,52 +17,54 @@ const handleClose = (done: () => void) => {
 </script>
 
 <template>
-  <el-affix :offset="0">
-    <el-row class="header" >
-      <el-col :span="1"  class="logo">
-        <img src="@/assets/xinyu.png" alt="心语" class="image-size" >
-      </el-col>
-      <el-col :span="18" class="menu">
-        <ul >
-          <li>
-            <a href= "javaScript:">首页</a>
-          </li>
-          <li> 
-            <a href= "javaScript:">心灵阅读</a>
-          </li>
-          <li>
-            <a href= "javaScript:">心理自测</a>
-          </li>
-          <li>
-            <a href= "javaScript:">预约咨询</a>
-          </li>
-          <li>
-            <a href= "javaScript:">树洞</a>
-          </li>
-        </ul>
-      </el-col>
-      <el-col :span="3" class="login">
-        <el-button  text @click="dialogVisible = true">登录/注册</el-button>
-      </el-col>
-    </el-row>
-  </el-affix>
-  <!-- 未修改 -->
-  <el-dialog
-    v-model="dialogVisible"
-    title="Tips"
-    width="30%"
-    :before-close="handleClose"
-  >
-    <span>This is a message</span>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogVisible = false">
-          Confirm
-        </el-button>
-      </span>
-    </template>
-  </el-dialog>
+  <div>
+    <el-affix :offset="0">
+      <el-row class="header" >
+        <el-col :span="1"  class="logo">
+          <img src="@/assets/xinyu.png" alt="心语" class="image-size" >
+        </el-col>
+        <el-col :span="18" class="menu">
+          <ul >
+            <li>
+              <a href= "javaScript:">首页</a>
+            </li>
+            <li> 
+              <a href= "javaScript:">心灵阅读</a>
+            </li>
+            <li>
+              <a href= "javaScript:">心理自测</a>
+            </li>
+            <li>
+              <a href= "javaScript:">预约咨询</a>
+            </li>
+            <li>
+              <a href= "javaScript:">树洞</a>
+            </li>
+          </ul>
+        </el-col>
+        <el-col :span="3" class="login">
+          <el-button  text @click="dialogVisible = true">登录/注册</el-button>
+        </el-col>
+      </el-row>
+    </el-affix>
+    <!-- 未修改 -->
+    <el-dialog
+      v-model="dialogVisible"
+      title="Tips"
+      width="30%"
+      :before-close="handleClose"
+    >
+      <span>This is a message</span>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="dialogVisible = false">Cancel</el-button>
+          <el-button type="primary" @click="dialogVisible = false">
+            Confirm
+          </el-button>
+        </span>
+      </template>
+    </el-dialog>
+  </div>
 </template>
 
 
