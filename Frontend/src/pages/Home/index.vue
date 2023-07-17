@@ -1,16 +1,12 @@
 <script setup>
-import HomeHeader from './components/HomeHeader.vue'
-import HomeContent from './components/HomeContent.vue';
-import HomeFooter from './components/HomeFooter.vue';
+import HomeCarousel from './components/HomeCarousel.vue';
+import HomeRead from './components/HomeRead.vue';
 </script>
 
 <template>
-  <div>
-    <HomeHeader />
-    <HomeContent />
-    <HomeFooter />
-  </div>
+  <HomeCarousel />
+  <HomeRead />
 </template>
 
-<style>
+<style scoped>
 </style>

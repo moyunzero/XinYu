@@ -17,7 +17,7 @@ const handleClose = (done: () => void) => {
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <el-affix :offset="0">
       <el-row class="header" >
         <el-col :span="1"  class="logo">
@@ -69,12 +69,14 @@ const handleClose = (done: () => void) => {
 
 
 <style scoped lang="scss">
+.container {
+  width: 80vw;
+  margin: 10px auto;  
+}
 .header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 0;
-  width: 80vw;
   margin: 0 auto;
   background-color: white;  
   .logo{
@@ -84,6 +86,11 @@ const handleClose = (done: () => void) => {
       height: 60px;
     }
   }
+}
+.img-size{
+  width: 100%;
+  height: auto;
+  object-fit:contain;
 }
 .menu {
   display: flex;

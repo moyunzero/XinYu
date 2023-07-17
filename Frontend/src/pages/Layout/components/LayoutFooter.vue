@@ -6,7 +6,6 @@
   <div class="container">
     <!-- 联系方式部分 -->
     <div class="contact">
-      <div class="question">欢迎提问</div>
       <div class="email">
         <i class="iconfont icon-email"></i>
         <el-link  :underline="false">z305747648@163.com</el-link> 
@@ -55,11 +54,6 @@
   flex: 1;
   padding: 2% 0;
 
-  .question{
-    display: flex;
-    justify-content: center; 
-    margin-bottom: 1%;
-  }
   .email{
     padding-left:20%;
     margin-bottom: 2%;
