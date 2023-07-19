@@ -14,7 +14,6 @@
         v-for=" o in 3"
         :key="o"
         :span="6"
-        
         >
         <el-card shadow="hover" class="card">
           <img
@@ -37,7 +36,7 @@
 <style scoped lang="scss">
 .container{
   width: 80vw;
-  margin: 10px auto;
+  margin: 20px auto;
   .grid-content{
     display: flex;
     align-items: center;
