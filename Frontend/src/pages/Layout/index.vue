@@ -1,6 +1,5 @@
 <script setup>
 import LayoutHeader from './components/LayoutHeader.vue'
-
 import LayoutFooter from './components/LayoutFooter.vue';
 </script>
 
@@ -14,5 +13,5 @@ import LayoutFooter from './components/LayoutFooter.vue';
   </div>
 </template>
 
-<style>
+<style scoped>
 </style>

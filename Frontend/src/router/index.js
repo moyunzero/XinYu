@@ -1,6 +1,7 @@
 import { createRouter,createWebHistory } from'vue-router'
 import Layout from '../pages/Layout/index.vue'
 import Home from '../pages/Home/index.vue'
+import Treehole from '../pages/Treehole/index.vue'
 
 
 const router = createRouter({
@@ -13,6 +14,10 @@ const router = createRouter({
         {
           path:'/',
           component: Home
+        },
+        {
+          path:'/treehole',
+          component: Treehole
         },
     ]
     }

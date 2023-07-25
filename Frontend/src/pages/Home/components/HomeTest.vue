@@ -35,8 +35,8 @@ onMounted(()=>getMentalList())
             class="image"
           />
           <div style="padding: 14px">
-            <div>{{ item.name}}</div>
-            <div>{{ item.id}}</div>
+            <div>{{ item.name }}</div>
+            <!-- <div>{{ item.id }}</div> -->
             <div>
               <a href="#">查看更多</a>
             </div>

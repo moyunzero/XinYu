@@ -26,7 +26,8 @@ const handleClose = (done: () => void) => {
         <el-col :span="18" class="menu">
           <ul >
             <li>
-              <a href= "javaScript:">首页</a>
+              <!-- <a href= "javaScript:">首页</a> -->
+              <RouterLink to="/">首页</RouterLink>
             </li>
             <li> 
               <a href= "javaScript:">心灵阅读</a>
@@ -38,7 +39,7 @@ const handleClose = (done: () => void) => {
               <a href= "javaScript:">预约咨询</a>
             </li>
             <li>
-              <a href= "javaScript:">树洞</a>
+              <RouterLink to="/Treehole"><a>树洞</a></RouterLink>
             </li>
           </ul>
         </el-col>
