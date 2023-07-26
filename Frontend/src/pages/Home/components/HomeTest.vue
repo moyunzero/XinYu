@@ -25,7 +25,7 @@ onMounted(()=>getMentalList())
     </el-row>
     <el-row justify="space-evenly" class="card-content">
       <el-col
-        v-for=" item in mentalList.slice(99,103)"
+        v-for=" item in mentalList.slice(0,6)"
         :key="item.id"
         :span="5"
         >
@@ -36,7 +36,6 @@ onMounted(()=>getMentalList())
           />
           <div style="padding: 14px">
             <div>{{ item.name }}</div>
-            <!-- <div>{{ item.id }}</div> -->
             <div>
               <a href="#">查看更多</a>
             </div>
@@ -47,7 +46,8 @@ onMounted(()=>getMentalList())
   </div>
 </template>
 
-<style scoped lang="scss">.container{
+<style scoped lang="scss">
+.container{
   width: 80vw;
   margin: 20px auto;
   .grid-content{

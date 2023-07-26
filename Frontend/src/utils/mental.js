@@ -12,7 +12,7 @@ const httpMental = axios.create({
 // axios请求拦截器
 httpMental.interceptors.request.use(config => {
   config.params = {
-      key:'645zk4g789D0FqZPmPCAG6d3qr',
+      key:'wyJcqxUAzFrK6Qz2uIAXfWhHWE',
       ...config.params
   }
   // 1. 从pinia获取token数据
