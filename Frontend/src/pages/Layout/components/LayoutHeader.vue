@@ -5,7 +5,7 @@ import { ElMessageBox } from 'element-plus'
 //Dialog弹出对话框
 const dialogVisible = ref(false)
 const handleClose = (done: () => void) => {
-  ElMessageBox.confirm('Are you sure to close this dialog?')
+  ElMessageBox.confirm('功能未实现')
     .then(() => {
       done()
     })
@@ -17,59 +17,62 @@ const handleClose = (done: () => void) => {
 </script>
 
 <template>
-  <div class="container">
-    <el-affix :offset="0">
-      <el-row class="header" >
-        <el-col :span="1"  class="logo">
-          <img src="@/assets/xinyu.png" alt="心语" class="image-size" >
-        </el-col>
-        <el-col :span="18" class="menu">
-          <ul >
-            <li>
-              <!-- <a href= "javaScript:">首页</a> -->
-              <RouterLink to="/">首页</RouterLink>
-            </li>
-            <li> 
-              <a href= "javaScript:">心灵阅读</a>
-            </li>
-            <li>
-              <a href= "javaScript:">心理自测</a>
-            </li>
-            <li>
-              <a href= "javaScript:">预约咨询</a>
-            </li>
-            <li>
-              <RouterLink to="/Treehole"><a>树洞</a></RouterLink>
-            </li>
-          </ul>
-        </el-col>
-        <el-col :span="3" class="login">
-          <el-button  text @click="dialogVisible = true">登录/注册</el-button>
-        </el-col>
-      </el-row>
-    </el-affix>
-    <!-- 未修改 -->
-    <el-dialog
-      v-model="dialogVisible"
-      title="Tips"
-      width="30%"
-      :before-close="handleClose"
-    >
-      <span>This is a message</span>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="dialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="dialogVisible = false">
-            Confirm
-          </el-button>
-        </span>
-      </template>
-    </el-dialog>
-  </div>
+    <div class="container">
+      <el-affix :offset="0" class="fixed">
+          <el-row class="header" >
+            <el-col :span="1"  class="logo">
+              <img src="@/assets/xinyu.png" alt="心语" class="image-size" >
+            </el-col>
+            <el-col :span="18" class="menu">
+              <ul >
+                <li>
+                  <!-- <a href= "javaScript:">首页</a> -->
+                  <RouterLink to="/">首页</RouterLink>
+                </li>
+                <li> 
+                  <a href= "javaScript:">心灵阅读</a>
+                </li>
+                <li>
+                  <a href= "javaScript:">心理自测</a>
+                </li>
+                <li>
+                  <a href= "javaScript:">预约咨询</a>
+                </li>
+                <li>
+                  <RouterLink to="/Treehole"><a>树洞</a></RouterLink>
+                </li>
+              </ul>
+            </el-col>
+            <el-col :span="3" class="login">
+              <el-button  text @click="dialogVisible = true">登录/注册</el-button>
+            </el-col>
+          </el-row>
+      </el-affix>
+
+
+      <!-- 未修改 -->
+      <el-dialog
+        v-model="dialogVisible"
+        title="登录/注册"
+        width="30%"
+        :before-close="handleClose"
+      >
+        <span>功能未实现</span>
+        <template #footer>
+          <span class="dialog-footer">
+            <el-button @click="dialogVisible = false">Cancel</el-button>
+            <el-button type="primary" @click="dialogVisible = false">
+              Confirm
+            </el-button>
+          </span>
+        </template>
+      </el-dialog>
+    </div>
 </template>
 
 
 <style scoped lang="scss">
+
 .container {
   width: 80vw;
   margin: 10px auto;  

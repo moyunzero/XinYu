@@ -4,8 +4,8 @@ import LayoutFooter from './components/LayoutFooter.vue';
 </script>
 
 <template>
-  <div>
-    <LayoutHeader />
+  <div class="xinyu">
+    <LayoutHeader/>
 
     <RouterView />
 
