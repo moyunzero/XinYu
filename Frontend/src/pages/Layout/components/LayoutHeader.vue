@@ -36,7 +36,8 @@ const handleClose = (done: () => void) => {
                   <a href= "javaScript:">心理自测</a>
                 </li>
                 <li>
-                  <a href= "javaScript:">预约咨询</a>
+                  <!-- <a href= "javaScript:">预约咨询</a> -->
+                  <RouterLink to="/subscribe"><a>预约咨询</a></RouterLink>
                 </li>
                 <li>
                   <RouterLink to="/Treehole"><a>树洞</a></RouterLink>

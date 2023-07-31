@@ -66,11 +66,12 @@
 const express = require('express')
 const path = require('path')
 const ejs = require('ejs')
-const config = require('./config/default')
-const router = require('./route/files')
-const routerApi = require('./route/shudong')
+const sdfileApi = require('./route/files')
+const shudongApi = require('./route/shudong')
+const orderApi  = require('./route/order')
 const app = express()
 const fs = require('fs')
+
 // 递归创建路径
 const mkdirs = (dirpath) => {
     console.log(path.dirname(dirpath))
@@ -83,6 +84,7 @@ const mkdirs = (dirpath) => {
 var img_dir = path.join(__dirname, './assets/wallimgs/')
 fs.existsSync(img_dir) == false ? mkdirs(img_dir) : console.log('路径已经存在')
 app.use('/assets/wallimgs',express.static(path.join(__dirname,'./assets/wallimgs')))
+
 //配置跨域
 app.all('*',(req,res,next) => {
     res.header('Access-Control-Allow-Origin','*')
@@ -100,7 +102,6 @@ app.all('*',(req,res,next) => {
     }
 })
 
-
 //加入html视图
 app.engine('html',ejs.__express)
 app.set('view engine','html')
@@ -108,10 +109,13 @@ app.set('view engine','html')
 //解析前端数据
 app.use(express.json())
 app.use(express.urlencoded({ extended : true }))
+
 //引入路由
-app.use('/walls',routerApi)
-app.use('/walls',router)
-// require('./routes/files')(app)
-app.listen(config.port,() => {
-    console.log(`我启动了端口${config.port}`)
+app.use('/walls',shudongApi)
+app.use('/walls',sdfileApi)
+app.use('/order',orderApi)
+
+
+app.listen(3000,() => {
+    console.log(`我启动了端口3000`)
 })

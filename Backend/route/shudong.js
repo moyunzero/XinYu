@@ -1,10 +1,7 @@
 const controller = require('../router/shudong')
 const express = require('express')
 const router = express.Router()
-router.get('/test',(req,res) => {
-    res.type('html')
-    res.render('test')
-})
+
 //新建数据
 router.post('/insertwall',(req,res)=>{
     controller.insertWall(req,res)

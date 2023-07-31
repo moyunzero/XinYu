@@ -277,7 +277,6 @@ const getUser = () => {
     let timer = setInterval(()=>{
         if(store.state.user){
             clearInterval(timer)
-            // getWallCard(ids.value)
             getWallCard(0)
         }
     },10)

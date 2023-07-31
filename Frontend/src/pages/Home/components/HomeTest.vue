@@ -15,7 +15,6 @@ const getMentalList = async()=>{
 onMounted(()=>getMentalList())
 </script>
 
-
 <template>
   <div class="container">
     <el-row >
