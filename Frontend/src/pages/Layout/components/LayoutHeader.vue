@@ -26,7 +26,6 @@ const handleClose = (done: () => void) => {
             <el-col :span="18" class="menu">
               <ul >
                 <li>
-                  <!-- <a href= "javaScript:">首页</a> -->
                   <RouterLink to="/">首页</RouterLink>
                 </li>
                 <li> 
@@ -36,7 +35,6 @@ const handleClose = (done: () => void) => {
                   <a href= "javaScript:">心理自测</a>
                 </li>
                 <li>
-                  <!-- <a href= "javaScript:">预约咨询</a> -->
                   <RouterLink to="/subscribe"><a>预约咨询</a></RouterLink>
                 </li>
                 <li>
@@ -73,12 +71,9 @@ const handleClose = (done: () => void) => {
 
 
 <style scoped lang="scss">
-
-.container {
+.header{
   width: 80vw;
   margin: 10px auto;  
-}
-.header{
   display: flex;
   justify-content: space-between;
   align-items: center;

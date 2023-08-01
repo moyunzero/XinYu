@@ -14,7 +14,27 @@ const connection = mysql.createConnection({
 connection.connect();
 
 const getorder = function(req, res) {
-    const sql = 'SELECT * FROM `order`'; // 根据实际情况修改查询条件
+    const sql = 'SELECT * FROM `order`WHERE order_id = 1'; // 根据实际情况修改查询条件
+    connection.query(sql, [req.query.userId], function(err, result) {
+        if (err) {
+            console.log('[SELECT ERROR] - ', err.message);
+            return;
+        }
+        res.json(result);
+    });
+}
+const getorder2 = function(req, res) {
+    const sql = 'SELECT * FROM `order`WHERE order_id = 2'; // 根据实际情况修改查询条件
+    connection.query(sql, [req.query.userId], function(err, result) {
+        if (err) {
+            console.log('[SELECT ERROR] - ', err.message);
+            return;
+        }
+        res.json(result);
+    });
+}
+const getorder3 = function(req, res) {
+    const sql = 'SELECT * FROM `order`WHERE order_id = 3'; // 根据实际情况修改查询条件
     connection.query(sql, [req.query.userId], function(err, result) {
         if (err) {
             console.log('[SELECT ERROR] - ', err.message);
@@ -25,5 +45,7 @@ const getorder = function(req, res) {
 }
 // API接口：获取文章
 router.get('/order', getorder)
+router.get('/order2', getorder2)
+router.get('/order3', getorder3)
 
 module.exports = router
