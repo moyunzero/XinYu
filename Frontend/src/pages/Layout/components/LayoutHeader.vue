@@ -29,7 +29,7 @@ const handleClose = (done: () => void) => {
                   <RouterLink to="/">首页</RouterLink>
                 </li>
                 <li> 
-                  <a href= "javaScript:">心灵阅读</a>
+                  <RouterLink to="/article">心灵阅读</RouterLink>
                 </li>
                 <li>
                   <a href= "javaScript:">心理自测</a>

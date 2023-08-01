@@ -45,6 +45,7 @@ onMounted(async () => {
                 :src= "item.img"
                 class="image"
               />
+            <RouterLink to="/noinfo">
               <div class="card-content">
                 <div class="card-title" >
                     {{ item.title }}
@@ -53,7 +54,9 @@ onMounted(async () => {
                 <div class="bottom">
                   <el-button text class="button">暂无全文</el-button>
                 </div>
+              
               </div>
+            </RouterLink>
             </el-card>
         </div>
       </div>

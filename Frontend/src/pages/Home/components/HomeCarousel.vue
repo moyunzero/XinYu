@@ -21,7 +21,7 @@
 <style scoped>
 
 .carousel {
-  margin:  0 5vw;
+  margin:  20px 5vw;
 }
 .car-img{
   width: 100%;

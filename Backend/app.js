@@ -69,6 +69,7 @@ const ejs = require('ejs')
 const sdfileApi = require('./route/files')
 const shudongApi = require('./route/shudong')
 const orderApi  = require('./route/order')
+const articleApi = require('./route/article')
 const app = express()
 const fs = require('fs')
 
@@ -114,6 +115,8 @@ app.use(express.urlencoded({ extended : true }))
 app.use('/walls',shudongApi)
 app.use('/walls',sdfileApi)
 app.use('/order',orderApi)
+app.use('/article',articleApi)
+
 
 
 app.listen(3000,() => {

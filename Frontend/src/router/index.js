@@ -3,6 +3,8 @@ import Layout from '../pages/Layout/index.vue'
 import Home from '../pages/Home/index.vue'
 import Treehole from '../pages/Treehole/index.vue'
 import Subscribe  from '../pages/Subscribe/index.vue'
+import Article from '../pages/Article/index.vue'
+import Blanck from '../pages/blanck.vue'
 
 
 const router = createRouter({
@@ -23,8 +25,16 @@ const router = createRouter({
         {
           path:'/subscribe',
           component: Subscribe
+        },
+        {
+          path:'/article',
+          component: Article
+        },
+        {
+          path:'/noinfo',
+          component:Blanck
         }
-    ]
+      ]
     }
   ],
   //
