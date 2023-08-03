@@ -5,7 +5,7 @@ import { getArticleApi } from '@/apis/article';
 const articleList = ref([]);
 const getList = async()=>{
   const res = await getArticleApi();
-  articleList.value =  res;
+  articleList.value =  res.slice(0,3);
 }
 
 onMounted( ()=>getList())

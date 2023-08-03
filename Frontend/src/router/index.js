@@ -4,6 +4,7 @@ import Home from '../pages/Home/index.vue'
 import Treehole from '../pages/Treehole/index.vue'
 import Subscribe  from '../pages/Subscribe/index.vue'
 import Article from '../pages/Article/index.vue'
+import Test from '../pages/Test/index.vue'
 import Blanck from '../pages/blanck.vue'
 
 
@@ -29,6 +30,10 @@ const router = createRouter({
         {
           path:'/article',
           component: Article
+        },
+        {
+          path:'/test',
+          component: Test
         },
         {
           path:'/noinfo',

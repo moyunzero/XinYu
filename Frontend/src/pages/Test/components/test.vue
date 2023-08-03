@@ -1,27 +1,21 @@
 <script setup>
 import { ref, computed,onMounted } from 'vue';
-import { getArticleApi } from '@/apis/article';
+import { getTestApi } from '@/apis/test';
 
 const currentPage = ref(1);
 const itemsPerPage = 10;
 const totalItems = ref(0);
 
-const articleList = ref([]);
+const testList = ref([]);
 const getList = async()=>{
-  const res = await getArticleApi();
-  articleList.value = res;
-  totalItems.value = Math.ceil(articleList.value.length / itemsPerPage);
+  const res = await getTestApi();
+  testList.value = res;
+  totalItems.value = Math.ceil(testList.value.length / itemsPerPage);
 };
 const displayedItems = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage;
-  // const endIndex = Math.min(startIndex + itemsPerPage,totalItems.value);
-  // const endIndex = currentPage.value * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  // if(endIndex>articleList.value.length){
-  //   endIndex = articleList.value.length;
-  // }
-  // return Array.from({ length: itemsPerPage }, (_, index) => startIndex + index + 1);
-  return articleList.value.slice(startIndex, endIndex);
+  return testList.value.slice(startIndex, endIndex);
 });
 
 function handleCurrentChange(newPage) {
@@ -35,21 +29,21 @@ onMounted( async()=>{
 
 <template>
   <div class="container">
-    <h2>心理阅读</h2>
+    <h2>心理测试</h2>
     <div class="article-box">
       <div class="article-card" v-for="item in displayedItems" :key="item.id" >
         <el-image
-          :src='item.img'
+          :src='item.image'
           class="image"
         />
         <div class="content">
         <RouterLink to="/noinfo">
           <div class="title">{{ item.title }}</div>
         </RouterLink>
-          <div class="info">{{item.content}}</div>
+          <div class="info">{{item.info}}</div>
           <div class="bottom">
-            <div class="author">匿名</div>
-            <div class="label">#{{ item.label}}</div>
+            <div class="author">{{ item.time.substring(0, 10)  }}</div>
+            <div class="label">免费</div>
           </div>
         </div>
       </div>  

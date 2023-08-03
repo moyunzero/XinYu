@@ -32,7 +32,7 @@ const handleClose = (done: () => void) => {
                   <RouterLink to="/article">心灵阅读</RouterLink>
                 </li>
                 <li>
-                  <a href= "javaScript:">心理自测</a>
+                  <RouterLink to="/test">心灵自测</RouterLink>
                 </li>
                 <li>
                   <RouterLink to="/subscribe"><a>预约咨询</a></RouterLink>
@@ -71,6 +71,9 @@ const handleClose = (done: () => void) => {
 
 
 <style scoped lang="scss">
+.container{
+  margin-top: 10px;
+}
 .header{
   width: 80vw;
   margin: 10px auto;  

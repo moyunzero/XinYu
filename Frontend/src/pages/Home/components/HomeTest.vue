@@ -1,18 +1,14 @@
 <script setup>
-import  httpMental  from '@/utils/mental';
-import { onMounted ,ref} from 'vue';
-const mentalList = ref([]);
+import  { getTestApi }from '@/apis/test';
+import { onMounted ,ref } from 'vue';
 
-const getMentalList = async()=>{
-  const params = {
-    method:'get',
-    do:'list',
-  }
-  const res = await httpMental('',{params});
-  mentalList.value = res.data;
+const mentalList = ref([]);
+const getList = async()=>{
+  const res = await getTestApi();
+  mentalList.value =  res;
 }
 
-onMounted(()=>getMentalList())
+onMounted( ()=>getList() )
 </script>
 
 <template>
@@ -24,21 +20,23 @@ onMounted(()=>getMentalList())
     </el-row>
     <el-row justify="space-evenly" class="card-content">
       <el-col
-        v-for=" item in mentalList.slice(0,6)"
+        v-for=" item in mentalList"
         :key="item.id"
         :span="5"
         >
         <el-card shadow="hover" class="card">
           <img
-            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+            :src="item.image"
             class="image"
           />
-          <div style="padding: 14px">
-            <div>{{ item.name }}</div>
-            <div>
-              <a href="#">查看更多</a>
+          <div class="info">
+              <div class="title">{{ item.title }}</div>
+              <div class="content">{{ item.info }}</div>
+              <div class="bottom">
+                <RouterLink to="/noinfo">暂无全文</RouterLink>
+                <div class="label">免费</div>
+              </div>
             </div>
-          </div>
         </el-card>
       </el-col>
     </el-row>
@@ -48,10 +46,11 @@ onMounted(()=>getMentalList())
 <style scoped lang="scss">
 .container{
   width: 80vw;
-  margin: 20px auto;
+  margin: 50px auto;
   .grid-content{
     display: flex;
     align-items: center;
+    margin-bottom: 30px;
     justify-content: center;  
     min-height: 36px;
     font-size: 24px;
@@ -59,10 +58,41 @@ onMounted(()=>getMentalList())
   .card-content{
     margin-top: 10px;      
     .card{
+      height: 250px;
       border-radius: 20px;
     } 
   }
 }
+.card-content{
+    display: flex;
+    margin-top: 10px;    
+    justify-content: space-around;
+    .card{
+      border-radius: 20px;
+      .info{
+        padding-top: 10px;
+        .title{
+          margin-bottom: 10px;
+          font-weight: bolder;
+        }
+        .content{
+            color:#666;
+          }
+        .bottom {
+          margin-top: 13px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .label{
+            padding: 2px; 
+            border-radius: 5px;
+            color: rgb(240, 12, 12,0.9);
+            background-color: #f1f5f9;
+          }
+        }
+      }
+    } 
+  }
 .image {
   width: 100%;
   display: block;
