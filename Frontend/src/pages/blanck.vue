@@ -1,4 +1,10 @@
 <template>
-  <el-empty description="暂无任何资源" >
+  <el-empty class="blanck" description="暂无任何资源" >
   </el-empty>
-</template>>
+</template>
+
+<style scoped lang="scss">
+.blanck {
+  height: 450px;
+} 
+</style>

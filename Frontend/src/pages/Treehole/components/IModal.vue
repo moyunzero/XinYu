@@ -1,16 +1,3 @@
-<template>
-    <transition name="modal">
-        <div class="i-modal" v-if="isModal">
-            <div class="i-modal-head">
-                <p class="modal-name">{{ title }}</p>
-                <span class="iconfont icon-guanbi" @click="closeModal"></span>
-            </div>
-            <div class="i-modal-main">
-                <slot ></slot>
-            </div>
-        </div>
-    </transition>
-</template>
 <script setup>
 const props = defineProps({
     title: {
@@ -26,6 +13,20 @@ const closeModal = () => {
 }
 
 </script>
+<template>
+    <transition name="modal">
+        <div class="i-modal" v-if="isModal">
+            <div class="i-modal-head">
+                <p class="modal-name">{{ title }}</p>
+                <span class="iconfont icon-guanbi" @click="closeModal"></span>
+            </div>
+            <div class="i-modal-main">
+                <slot ></slot>
+            </div>
+        </div>
+    </transition>
+</template>
+
 
 <style lang="scss" scoped>
 .modal{

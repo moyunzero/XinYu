@@ -1,13 +1,3 @@
-<template>
-    <transition name="downs" key="box2">
-        <div class="i-message" v-if="isShow">
-            <div class="i-m-i">
-                <i class="iconfont" :class="style[type].icon"></i>
-                <span class="text">{{ message }}</span>
-            </div>
-        </div>
-    </transition>
-</template>
 <script setup>
 import { ref,onMounted } from 'vue';
 const props = defineProps({
@@ -33,6 +23,7 @@ const style = {
     }
 }
 const isShow = ref(false)
+
 onMounted(()=>{
     isShow.value = true
     setTimeout(()=>{
@@ -41,6 +32,17 @@ onMounted(()=>{
 })
 
 </script>
+<template>
+    <transition name="downs" key="box2">
+        <div class="i-message" v-if="isShow">
+            <div class="i-m-i">
+                <i class="iconfont" :class="style[type].icon"></i>
+                <span class="text">{{ message }}</span>
+            </div>
+        </div>
+    </transition>
+</template>
+
 <style lang="scss" scoped>
 .downs {
     &-enter {

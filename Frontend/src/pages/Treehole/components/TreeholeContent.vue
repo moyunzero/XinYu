@@ -1,63 +1,17 @@
-<template>
-    <div class="wall-message">
-        <div class="label">
-            <p class="label-list " :class="{lbselected : nowlabel == -1}" @click="selectNode(-1)">全部</p>
-            <p class="label-list" :class="{lbselected : nowlabel == index}" v-for="(e,index) in label[0]" :key="index"
-            @click="selectNode(index)"
-            >
-            {{ e }}
-            </p>
-        </div>
-        <!-- <div class="card" :style="{width : nowWidth + 'px'}" v-show="ids == 0"> -->
-        <div class="card" :style="{width : nowWidth + 'px'}" v-show="true">
-            <NodeCard :width='"265px"' class="card-inner" :class="{ cardselected : index == cardSelected}"  @toDetail="selectCard(index)" :note="e" v-for="(e,index) in cards" :key="index"></NodeCard>
-        </div>
-        <div class="add" :style="{bottom : addBottom + 'px'}" @click="addCard" v-show="!isModal">
-            <span class="iconfont icon-jia" ></span>
-        </div>
-        <!-- 卡片状态 -->
-        <div class="none-msg" v-if="isOk == 0">
-            <img :src="none[0].url" >
-            <p>{{ none[0].msg }}</p>
-
-        </div>
-        <div class="loading" v-show="isOk == -1">
-            <div id="lottile">
-            </div>
-            <p>加载中....</p>
-        
-        </div>
-        <p class="bottom-tip" v-show="isOk == 2">
-            没有更多....
-        </p>
-        <IModal :title="title" @close="closeModal" :isModal="isModal">
-            <NewCard @clickbt="newCard" :id="0"   @closeModal="closeModal" v-if="cardSelected == -1"></NewCard>
-            <CardDetail :card="cards[cardSelected]" v-else></CardDetail>
-        </IModal>
-        <Viewer :isView="view" :photos="photoArr" :nowNumber="cardSelected" @viewSwitch="viewSwitch"></Viewer>
-        
-    </div>
-    
-</template>
-
 <script setup>
 import { ref,onMounted,onUnmounted,computed,watch,nextTick  } from 'vue'
-import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { label,none } from '@/utils/data'
 import NodeCard from './NodeCard.vue'
 import IModal from './IModal.vue'
 import NewCard from './NewCard.vue'
 import CardDetail from './CardDetail.vue'
-// import PhotoCard from './PhotoCard.vue'
-import Viewer from './Viewer.vue'
 import lottie from 'lottie-web'
 import loadings from '@/assets/loading.json'
 import { findWallPageApi } from '@/apis/shudong'
-const route = useRoute()
 const store = useStore()
+
 onMounted(()=>{
-    
     //监听屏幕宽度变化
     window.addEventListener('resize',noteWidth)
     //监听滚动
@@ -74,19 +28,15 @@ onUnmounted(()=>{
     window.removeEventListener('scroll',scrollBottom)
 }
 )
+
 const pagesize = ref(20)
 const page = ref(1)
 //是否加载中 -1,为加载中，0为没有拿到数据
 const isOk = ref(-1)
 //卡片数据
 const cards = ref([])
-//图片数组
-const photoArr = ref([])
-//照片是否开启预览
-const view = ref(false)
 // 选中标签
 const nowlabel = ref(-1)
-// 判断是留言墙还是照片墙
 
 //弹出层标题
 const title = ref('写留言')
@@ -111,26 +61,6 @@ const noteWidth = () => {
     let wWidth = document.body.clientWidth //获取页面宽度
     nowWidth.value = Math.floor((wWidth-120)/300) * 300
 }
-function debounce(fn, delay){
-  let timer = null; // 借助闭包
-  return function () {
-    if (timer) {
-      clearTimeout(timer);
-    }
-    timer = setTimeout(fn, delay); // 简化写法
-  };
-}
-function debounce1(fn, delay) {
-            let time = null;//time用来控制事件的触发
-            return function () {
-                if (time !== null) {
-                    clearTimeout(time);
-                }
-                time = setTimeout(() => {
-                    fn.call(this);
-                    //利用call(),让this的指针从指向window 转成指向input
-                }, delay)
-            }}
 let isAct = false
 //监听页面滚动
 const scrollBottom = async () => {
@@ -146,12 +76,8 @@ const scrollBottom = async () => {
         addBottom.value = 30
     }
     //加载更多
-    
     if (Math.ceil(scrollTop) + clientHeight >= scrollHeight - 20 && !isAct){
-        // debounce((getWallCard(ids.value)),1000)
-        // getWallCard(ids.value)
         getWallCard(0)
-        
     }
 }
 //改变弹出层状态
@@ -194,8 +120,6 @@ watch(ids,(newValue,oldValue)=>{
     cardSelected.value = -1
     cards.value = []
     getWallCard(newValue)
-    
-   
 })
 //用户IP
 var user = computed(()=>{
@@ -262,13 +186,6 @@ const getWallCard = (id) => {
                     isOk.value = 0
 
                 }
-            //如果为图片则将图片单独拿出来
-            if(id == 1){
-                for(let i=0;i<res.message.length;i++){
-                    photoArr.value.push(res.message[i].imgurl)
-                }
-                
-            }
             isAct = false
         })
     }
@@ -285,6 +202,46 @@ const toDetail = () =>{
     selectCard()
 }
 </script>
+
+<template>
+    <div class="wall-message">
+        <div class="label">
+            <p class="label-list " :class="{lbselected : nowlabel == -1}" @click="selectNode(-1)">全部</p>
+            <p class="label-list" :class="{lbselected : nowlabel == index}" v-for="(e,index) in label[0]" :key="index"
+            @click="selectNode(index)"
+            >
+            {{ e }}
+            </p>
+        </div>
+        <div class="card" :style="{width : nowWidth + 'px'}" v-show="true">
+            <NodeCard :width='"265px"' class="card-inner" :class="{ cardselected : index == cardSelected}"  @toDetail="selectCard(index)" :note="e" v-for="(e,index) in cards" :key="index"></NodeCard>
+        </div>
+        <div class="add" :style="{bottom : addBottom + 'px'}" @click="addCard" v-show="!isModal">
+            <span class="iconfont icon-jia" ></span>
+        </div>
+        <!-- 卡片状态 -->
+        <div class="none-msg" v-if="isOk == 0">
+            <img :src="none[0].url" >
+            <p>{{ none[0].msg }}</p>
+
+        </div>
+        <div class="loading" v-show="isOk == -1">
+            <div id="lottile">
+            </div>
+            <p>加载中....</p>
+        
+        </div>
+        <p class="bottom-tip" v-show="isOk == 2">
+            没有更多....
+        </p>
+        <IModal :title="title" @close="closeModal" :isModal="isModal">
+            <NewCard @clickbt="newCard" :id="0"   @closeModal="closeModal" v-if="cardSelected == -1"></NewCard>
+            <CardDetail :card="cards[cardSelected]" v-else></CardDetail>
+        </IModal>
+    </div>
+    
+</template>
+
 <style lang="scss" scoped>
 .wall-message{
     min-height: 700px;

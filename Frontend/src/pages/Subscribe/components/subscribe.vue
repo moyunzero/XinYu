@@ -44,6 +44,7 @@ onMounted(async () => {
               <el-image 
                 :src= "item.img"
                 class="image"
+                lazy
               />
             <RouterLink to="/noinfo">
               <div class="card-content">
@@ -54,7 +55,6 @@ onMounted(async () => {
                 <div class="bottom">
                   <el-button text class="button">暂无全文</el-button>
                 </div>
-              
               </div>
             </RouterLink>
             </el-card>
@@ -67,6 +67,7 @@ onMounted(async () => {
             <el-image 
               :src= "item.img"
               class="image"
+              lazy
             />
             <div class="card-content">
               <div class="card-title" >
@@ -87,7 +88,7 @@ onMounted(async () => {
             <el-image 
               :src= "item.img"
               class="image"
-
+              lazy
             />
             <div class="card-content">
               <div class="card-title" >
@@ -102,8 +103,6 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-
-
 </template>
 
 <style scoped lang="scss">

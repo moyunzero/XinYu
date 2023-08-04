@@ -3,6 +3,7 @@ import  { getTestApi }from '@/apis/test';
 import { onMounted ,ref } from 'vue';
 
 const mentalList = ref([]);
+
 const getList = async()=>{
   const res = await getTestApi();
   mentalList.value =  res;
@@ -28,6 +29,7 @@ onMounted( ()=>getList() )
           <img
             :src="item.image"
             class="image"
+            lazy
           />
           <div class="info">
               <div class="title">{{ item.title }}</div>

@@ -1,11 +1,6 @@
 const mysql = require('mysql')
 const config = require('../config/default')
-// const db = mysql.createConnection({
-//     host: config.database.HOST,
-//     user: config.database.USER,
-//     password: config.database.PASSWORD,
-//     port: 3306
-// })
+
 //链接指定数据库
 const pool = mysql.createPool({
     host: config.database.HOST,
@@ -14,20 +9,7 @@ const pool = mysql.createPool({
     database: config.database.BASE,
     port: 3306
 })
-//直接使用
-// let bdbs = (sql, values) => {
-//     return new Promise((resolve, reject) => {
-//         db.query(sql, values, (err, res) => {
-//             if (err) {
-//                 reject(err)
 
-//             } else {
-//                 resolve(res)
-//             }
-//         })
-//     })
-// }
-//通过pool.getConnection获取链接
 let query = (sql, values) => {
     return new Promise((resolve, reject) => {
         pool.getConnection((err, connection) => {

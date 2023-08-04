@@ -1,10 +1,3 @@
-<template>
-    <div>
-        <button :class="[size,active]" class="btn">
-            <slot></slot>
-        </button>
-    </div>
-</template>
 <script setup>
 defineProps({
     size : {
@@ -15,6 +8,15 @@ defineProps({
     }
 })
 </script>
+
+<template>
+    <div>
+        <button :class="[size,active]" class="btn">
+            <slot></slot>
+        </button>
+    </div>
+</template>
+
 <style lang="scss" scoped>
 .btn{
     text-align: center;

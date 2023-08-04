@@ -4,6 +4,7 @@ import TreeholeContent from './components/TreeholeContent.vue';
 import { signIpApi } from '@/apis/shudong';
 import { useStore } from 'vuex';
 import { onMounted } from 'vue'
+
 const store = useStore()
 const getUser = () => {
     signIpApi().then(res=>{
@@ -13,6 +14,7 @@ const getUser = () => {
         store.commit('getUser',user)
     })
 }
+
 onMounted(()=>{
     getUser()
 })

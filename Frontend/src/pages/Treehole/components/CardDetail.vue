@@ -1,35 +1,3 @@
-<template>
-    <div class="card-detail">
-        <!-- <div class="top-bt">
-            <p class="revoke" @click="delete_card">联系墙主撕掉该便签</p>
-            <p class="report">举报</p>
-        </div> -->
-        <NodeCard :note="cards"></NodeCard>
-        <div class="form">
-            <textarea class="message" placeholder="请输入..." v-model="discuss"></textarea>
-            <div class="bt">
-                <input type="text" class="name" placeholder="签名" v-model="name" >
-                <Ibutton :class="{notallowed : !isDis}" @click="submit">确定</Ibutton>
-            </div>
-        </div>
-        <p class="title">评论{{ cards.comcount[0].count }}</p>
-        <div class="comment">
-            <div class="comment-item" v-for="(e,index) in comment" :key="index">
-                <div class="user-head" :style="{ backgroundImage :portrait[e.imgurl] }"></div>
-                <div class="comment-content">
-                    <div class="comment-top">
-                        <p class="name">{{ e.name }}</p>
-                        <p class="time">{{ dateTransform(e.moment)}}</p>
-                    </div>
-                    <div class="comment-message">{{e.comment}}</div>
-                </div>
-            </div>
-            <p class="more" @click="getComment" v-show="page > 0">加载更多</p>
-        </div>
-    </div>
-
-
-</template>
 <script setup>
 import NodeCard from './NodeCard.vue';
 import Ibutton from './Ibutton.vue';
@@ -38,10 +6,6 @@ import { dateTransform } from '@/utils/methods'
 import { computed,ref,onMounted,watch,getCurrentInstance } from 'vue';
 import { useStore } from 'vuex';
 import { insertCommentApi,findCommentPage } from '@/apis/shudong'
-// import { baseImgPath } from '@/utils/env';
-// 获取当前组件实例
-// const { appContext } = getCurrentInstance();
-// const globalProxy = appContext.config.globalProperties;
 const store = useStore()
 const props = defineProps({
     card: {
@@ -114,37 +78,39 @@ const getComment = () => {
         })
     }
 }
-// const delete_card = () =>{
-//     console.log(1)
-//     globalProxy.Modal({ type: 'success', message: '已成功通知到墙主！' })
-// }
 </script>
+
+<template>
+    <div class="card-detail">
+        <NodeCard :note="cards"></NodeCard>
+        <div class="form">
+            <textarea class="message" placeholder="请输入留言" v-model="discuss"></textarea>
+            <div class="bt">
+                <input type="text" class="name" placeholder="签名" v-model="name" >
+                <Ibutton :class="{notallowed : !isDis}" @click="submit">确定</Ibutton>
+            </div>
+        </div>
+        <p class="title">评论{{ cards.comcount[0].count }}</p>
+        <div class="comment">
+            <div class="comment-item" v-for="(e,index) in comment" :key="index">
+                <div class="user-head" :style="{ backgroundImage :portrait[e.imgurl] }"></div>
+                <div class="comment-content">
+                    <div class="comment-top">
+                        <p class="name">{{ e.name }}</p>
+                        <p class="time">{{ dateTransform(e.moment)}}</p>
+                    </div>
+                    <div class="comment-message">{{e.comment}}</div>
+                </div>
+            </div>
+            <p class="more" @click="getComment" v-show="page > 0">加载更多</p>
+        </div>
+    </div>
+</template>
+
 <style lang="scss" scoped>
 .card-detail {
     position: relative;
     padding: 0 20px ;
-
-    .top-bt {
-        position: fixed;
-        top: 0;
-        left: 0;
-        padding: 20px;
-        display: flex;
-
-        .revoke {
-            color: #3B73F0;
-            cursor: pointer;
-            padding-right: 30px;
-            font-size: 16px;
-        }
-
-        .report {
-            font-size: 16px;
-            cursor: pointer;
-            color: #E83D3D;
-        }
-    }
-
     .form {
         .message {
             background: none;

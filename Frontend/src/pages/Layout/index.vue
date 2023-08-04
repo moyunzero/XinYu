@@ -6,9 +6,7 @@ import LayoutFooter from './components/LayoutFooter.vue';
 <template>
   <div class="xinyu">
     <LayoutHeader/>
-
     <RouterView />
-
     <LayoutFooter />
   </div>
 </template>

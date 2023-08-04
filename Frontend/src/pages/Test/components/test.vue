@@ -22,19 +22,20 @@ function handleCurrentChange(newPage) {
   currentPage.value = newPage;
 }
 //
-onMounted( async()=>{
-  await  getList();
+onMounted( 
+  async()=>{ await  getList();
 });
 </script>
 
 <template>
   <div class="container">
     <h2>心理测试</h2>
-    <div class="article-box">
-      <div class="article-card" v-for="item in displayedItems" :key="item.id" >
+    <div class="article-box" >
+      <div class="article-card" v-for="item in displayedItems" :key="item.id" lazy>
         <el-image
           :src='item.image'
           class="image"
+          
         />
         <div class="content">
         <RouterLink to="/noinfo">

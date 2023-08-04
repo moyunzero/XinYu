@@ -5,42 +5,38 @@ import { getArticleApi } from '@/apis/article';
 const currentPage = ref(1);
 const itemsPerPage = 10;
 const totalItems = ref(0);
-
 const articleList = ref([]);
+
 const getList = async()=>{
   const res = await getArticleApi();
   articleList.value = res;
   totalItems.value = Math.ceil(articleList.value.length / itemsPerPage);
 };
+
 const displayedItems = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage;
-  // const endIndex = Math.min(startIndex + itemsPerPage,totalItems.value);
-  // const endIndex = currentPage.value * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  // if(endIndex>articleList.value.length){
-  //   endIndex = articleList.value.length;
-  // }
-  // return Array.from({ length: itemsPerPage }, (_, index) => startIndex + index + 1);
   return articleList.value.slice(startIndex, endIndex);
 });
 
 function handleCurrentChange(newPage) {
   currentPage.value = newPage;
 }
-//
-onMounted( async()=>{
-  await  getList();
+
+onMounted( 
+  async()=>{ await getList();
 });
 </script>
 
 <template>
   <div class="container">
     <h2>心理阅读</h2>
-    <div class="article-box">
-      <div class="article-card" v-for="item in displayedItems" :key="item.id" >
+    <div class="article-box" >
+      <div class="article-card" v-for="item in displayedItems" :key="item.id" lazy>
         <el-image
           :src='item.img'
           class="image"
+       
         />
         <div class="content">
         <RouterLink to="/noinfo">
@@ -117,8 +113,6 @@ h2{
     }
   }
 }
-
-
 
 .image {
   width: 200px;

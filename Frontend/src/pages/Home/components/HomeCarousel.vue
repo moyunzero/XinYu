@@ -1,18 +1,17 @@
 <script setup>
-
 </script>
 
 <template>
   <div class="carousel">
     <el-carousel class="carousel" height="500px" autoplay interval="3000">
       <el-carousel-item >
-        <img class="car-img" src="@/assets/one.jpg" alt="">
+        <img class="car-img" src="@/assets/one.jpg" lazy>
       </el-carousel-item>
       <el-carousel-item >
-        <img class="car-img" src="@/assets/two.jpg" alt="">
+        <img class="car-img" src="@/assets/two.jpg" lazy>
       </el-carousel-item>
       <el-carousel-item >
-        <img class="car-img" src="@/assets/three.jpg" alt="">
+        <img class="car-img" src="@/assets/three.jpg" lazy>
       </el-carousel-item>
     </el-carousel>
   </div>

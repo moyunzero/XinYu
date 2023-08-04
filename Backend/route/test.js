@@ -15,7 +15,7 @@ connection.connect();
 
 const gettest = function(req, res) {
     const sql = 'SELECT * FROM `test`'; // 根据实际情况修改查询条件
-    connection.query(sql, [req.query.userId], function(err, result) {
+    connection.query(sql, function(err, result) {
         if (err) {
             console.log('[SELECT ERROR] - ', err.message);
             return;

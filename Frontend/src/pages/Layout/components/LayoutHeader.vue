@@ -48,7 +48,6 @@ const handleClose = (done: () => void) => {
           </el-row>
       </el-affix>
 
-
       <!-- 未修改 -->
       <el-dialog
         v-model="dialogVisible"
@@ -90,11 +89,6 @@ const handleClose = (done: () => void) => {
     }
   }
 }
-.img-size{
-  width: 100%;
-  height: auto;
-  object-fit:contain;
-}
 .menu {
   display: flex;
   margin-left: auto;
@@ -132,8 +126,6 @@ const handleClose = (done: () => void) => {
   justify-content: flex-end; /* 水平居中 */
   align-items: center; /* 垂直居中 */   
   height:60px;
-  // margin: 0 10px;
 }
-
 
 </style>

@@ -1,3 +1,86 @@
+<script setup>
+import { useStore } from 'vuex';
+import { ref, getCurrentInstance } from 'vue';
+import {
+    cardColor,// 输入卡片背景色
+    cardColorBlock, //颜色块
+    label //标签
+} from '@/utils/data'
+import { insertWallApi} from '@/apis/shudong'
+import Ibutton from './Ibutton.vue';
+// 获取当前组件实例
+const { appContext } = getCurrentInstance();
+const globalProxy = appContext.config.globalProperties;
+const store = useStore()
+//图片链接
+var url = ref('')
+//留言内容
+const message = ref('')
+//签名
+const name = ref('')
+//当前选择颜色
+const colorSelected = ref(0)
+//当前选中标签
+const labelSelected = ref(0)
+// 切换颜色
+const changeColor = (e) => {
+    colorSelected.value = e
+}
+// 切换标签
+const changeLabel = (e) => {
+    labelSelected.value = e
+}
+//关闭窗口
+const emits = defineEmits(['closeModal', 'clickbt'])
+const closeModal = (data) => {
+    emits('closeModal', data)
+}
+const props = defineProps({
+    id: {
+        default: 0
+    }
+})
+const submit = () => {
+    let names = '匿名'
+    if (name.value) {
+        names = name.value
+    }
+    let data = {
+            type: 0,
+            message: message.value,
+            name: names,
+            moment: new Date(),
+            label: labelSelected.value,
+            color: 5,
+            imgurl: ''
+        }
+    if (message.value && props.id == 0) {
+        data.color = colorSelected.value
+        insertWallApi(data).then(res => {
+            let cardD = {
+                type: 0,
+                message: message.value,
+                name: names,
+                moment: new Date(),
+                label: labelSelected.value,
+                imgurl: '',
+                id : res.message.insertId,
+                islike: [{ count: 0 }],
+                like: [{ count: 0 }],
+                comcount: [{ count: 0 }],
+                report: [{ count: 0 }],
+                revoke: [{ count: 0 }],
+                color: colorSelected.value
+
+            }
+            message.value = ''
+            emits('clickbt', cardD)
+            globalProxy.Modal({ type: 'success', message: '愿你开心' })
+        })
+    }
+}
+</script>
+
 <template>
     <div class="new-card">
         <div class="colors">
@@ -31,94 +114,7 @@
         </div>
     </div>
 </template>
-<script setup>
-import { useStore } from 'vuex';
-import { ref, getCurrentInstance } from 'vue';
-import {
-    cardColor,// 输入卡片背景色
-    cardColorBlock, //颜色块
-    label //标签
-} from '@/utils/data'
-// import { getObjectURL } from '@/utils/methods'
-import { insertWallApi} from '@/apis/shudong'
-import Ibutton from './Ibutton.vue';
-// 获取当前组件实例
-const { appContext } = getCurrentInstance();
-const globalProxy = appContext.config.globalProperties;
-const store = useStore()
-//图片链接
-var url = ref('')
-//留言内容
-const message = ref('')
-//签名
-const name = ref('')
-//当前选择颜色
-const colorSelected = ref(0)
-//当前选中标签
-const labelSelected = ref(0)
-//当前IP
-const user = store.state.user
-// 切换颜色
-const changeColor = (e) => {
-    colorSelected.value = e
-}
-// 切换标签
-const changeLabel = (e) => {
-    labelSelected.value = e
-}
-//关闭窗口
-const emits = defineEmits(['closeModal', 'clickbt'])
-const closeModal = (data) => {
-    emits('closeModal', data)
-}
-const props = defineProps({
-    id: {
-        default: 0
-    }
-})
-const submit = () => {
-    let names = '匿名'
-    if (name.value) {
-        names = name.value
-    }
-    let data = {
-            type: 0,
-            message: message.value,
-            name: names,
-            // userId: user.id,
-            moment: new Date(),
-            label: labelSelected.value,
-            color: 5,
-            imgurl: ''
-        }
-    if (message.value && props.id == 0) {
-        
-        data.color = colorSelected.value
-        insertWallApi(data).then(res => {
-            let cardD = {
-                type: 0,
-                message: message.value,
-                name: names,
-                // userId: user.id,
-                moment: new Date(),
-                label: labelSelected.value,
-                imgurl: '',
-                id : res.message.insertId,
-                islike: [{ count: 0 }],
-                like: [{ count: 0 }],
-                comcount: [{ count: 0 }],
-                report: [{ count: 0 }],
-                revoke: [{ count: 0 }],
-                color: colorSelected.value
 
-            }
-            message.value = ''
-            emits('clickbt', cardD)
-            globalProxy.Modal({ type: 'success', message: '感谢您的记录' })
-        })
-    }
-}
-</script>
 <style lang="scss" scoped>
 .new-card {
     padding: 0 20px 120px;

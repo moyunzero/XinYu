@@ -15,7 +15,7 @@ connection.connect();
 
 const getorder = function(req, res) {
     const sql = 'SELECT * FROM `order`WHERE order_id = 1'; // 根据实际情况修改查询条件
-    connection.query(sql, [req.query.userId], function(err, result) {
+    connection.query(sql, function(err, result) {
         if (err) {
             console.log('[SELECT ERROR] - ', err.message);
             return;
@@ -25,7 +25,7 @@ const getorder = function(req, res) {
 }
 const getorder2 = function(req, res) {
     const sql = 'SELECT * FROM `order`WHERE order_id = 2'; // 根据实际情况修改查询条件
-    connection.query(sql, [req.query.userId], function(err, result) {
+    connection.query(sql,  function(err, result) {
         if (err) {
             console.log('[SELECT ERROR] - ', err.message);
             return;
@@ -35,7 +35,7 @@ const getorder2 = function(req, res) {
 }
 const getorder3 = function(req, res) {
     const sql = 'SELECT * FROM `order`WHERE order_id = 3'; // 根据实际情况修改查询条件
-    connection.query(sql, [req.query.userId], function(err, result) {
+    connection.query(sql,  function(err, result) {
         if (err) {
             console.log('[SELECT ERROR] - ', err.message);
             return;

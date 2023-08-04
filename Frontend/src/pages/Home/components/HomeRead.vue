@@ -3,12 +3,13 @@ import { ref, onMounted } from 'vue';
 import { getArticleApi } from '@/apis/article';
 
 const articleList = ref([]);
+
 const getList = async()=>{
   const res = await getArticleApi();
   articleList.value =  res.slice(0,3);
 }
 
-onMounted( ()=>getList())
+onMounted( ()=>getList() );
 </script>
 
 
@@ -24,12 +25,12 @@ onMounted( ()=>getList())
           v-for=" (item,index) in articleList"
           :key="index"
           :span="6"
-          
           >
           <el-card shadow="hover" class="card">
             <img
               :src="item.img"
               class="image"
+              lazy
             />
             <div class="info">
               <div class="title">{{ item.title }}</div>

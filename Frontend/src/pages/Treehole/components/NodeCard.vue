@@ -1,29 +1,3 @@
-<template>
-    <div class="i-node-card" :style="{ width : width , background:cardColor[card.color]}">
-        <div class="top">
-            <p class="time">{{ dateTransform(card.moment) }}</p>
-            <p class="label">{{ label[card.type][card.label]}}</p>
-        </div>
-        <p class="message" @click="toDetail">
-            {{ card.message }}
-        </p>
-        <div class="foot"> 
-            <div class="foot-left">
-                <div class="icon" @click="clickLike">
-                    <span class="iconfont icon-hug" :class="{ 'islike' : card.islike[0].count >= 1}"></span>
-                    <span class="value">{{ card.like[0].count }}</span>
-                </div>
-                <div class="icon" >
-                    <span class="iconfont icon-liuyan"></span>
-                    <span class="value">{{ card.comcount[0].count }}</span>
-                </div>
-                
-            </div>
-            <div class="name">{{ card.name}}</div>
-            
-        </div>
-    </div>
-</template>
 <script setup>
 import { label,cardColor } from '@/utils/data'
 import { computed  } from 'vue';
@@ -55,7 +29,6 @@ const clickLike = ()=>{
             userId : store.state.user.id,
             type : 0,
             moment : new Date()
-
         }
         insertFeedBackApi(data).then(res=>{
             //反馈
@@ -65,6 +38,33 @@ const clickLike = ()=>{
     }
 }
 </script>
+<template>
+    <div class="i-node-card" :style="{ width : width , background:cardColor[card.color]}">
+        <div class="top">
+            <p class="time">{{ dateTransform(card.moment) }}</p>
+            <p class="label">{{ label[card.type][card.label]}}</p>
+        </div>
+        <p class="message" @click="toDetail">
+            {{ card.message }}
+        </p>
+        <div class="foot"> 
+            <div class="foot-left">
+                <div class="icon" @click="clickLike">
+                    <span class="iconfont icon-hug" :class="{ 'islike' : card.islike[0].count >= 1}"></span>
+                    <span class="value">{{ card.like[0].count }}</span>
+                </div>
+                <div class="icon" >
+                    <span class="iconfont icon-liuyan"></span>
+                    <span class="value">{{ card.comcount[0].count }}</span>
+                </div>
+                
+            </div>
+            <div class="name">{{ card.name}}</div>
+            
+        </div>
+    </div>
+</template>
+
 <style lang="scss" scoped>
 
 .i-node-card{
