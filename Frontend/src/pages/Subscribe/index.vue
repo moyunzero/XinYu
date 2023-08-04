@@ -8,7 +8,7 @@ import Subscribe from './components/subscribe.vue'
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
   .container {
     width:80vw;
     margin:0 auto;

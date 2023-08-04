@@ -61,7 +61,7 @@ onMounted( async()=>{
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .container {
   width:70vw;
   margin:20px auto;

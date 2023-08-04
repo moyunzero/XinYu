@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 .carousel {
   margin:  20px 5vw;
