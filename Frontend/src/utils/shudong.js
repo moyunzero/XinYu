@@ -1,7 +1,6 @@
-import { baseUrl } from "./env";
 import axios from "axios";
 const service = axios.create({
-    baseURL  : baseUrl,
+    baseURL: 'http://soulpal.top:3006/walls',
 })
 
 //请求拦截器

@@ -28,6 +28,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div class="container">
     <div class="header">
       <h1>关于心理咨询</h1>
     </div>
@@ -103,9 +104,14 @@ onMounted(async () => {
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <style scoped lang="scss">
+.container{
+  width: 80vw;
+  margin: 0 auto;
+}
 h1{
   margin: 20px 0 ;
   text-align: center;

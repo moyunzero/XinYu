@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const testApi = axios.create({
-  baseURL: 'http://localhost:3000/test',
+  baseURL: 'http://soulpal.top:3006/test',
   timeout: 5000
 })
 testApi.interceptors.request.use(

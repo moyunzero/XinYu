@@ -6,6 +6,6 @@ import Test from './components/test.vue'
   <Test />
 </template>
 
-<style scope>
+<style scoped>
 
 </style>

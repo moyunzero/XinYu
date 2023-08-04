@@ -21,20 +21,10 @@ onMounted(()=>{
 </script>
 
 <template>
-  <div class="treehole">
     <TreeholeHead />
     <TreeholeContent />
-  </div> 
 </template>
 
 <style scoped lang="scss">
-.treehole {
-    .bg-video{
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        height: 880px;
-    }
-}
+
 </style>

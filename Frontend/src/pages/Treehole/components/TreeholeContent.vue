@@ -52,7 +52,7 @@ const selectNode = (e) => {
     nowlabel.value = e
     cards.value = []
     page.value = 1
-    // getWallCard(ids.value)
+
     getWallCard(0)
 }
 //note的宽度
@@ -213,8 +213,8 @@ const toDetail = () =>{
             {{ e }}
             </p>
         </div>
-        <div class="card" :style="{width : nowWidth + 'px'}" v-show="true">
-            <NodeCard :width='"265px"' class="card-inner" :class="{ cardselected : index == cardSelected}"  @toDetail="selectCard(index)" :note="e" v-for="(e,index) in cards" :key="index"></NodeCard>
+        <div class="card"  v-show="true">
+            <NodeCard :width='"19vw"' class="card-inner" :class="{ cardselected : index == cardSelected}"  @toDetail="selectCard(index)" :note="e" v-for="(e,index) in cards" :key="index"></NodeCard>
         </div>
         <div class="add" :style="{bottom : addBottom + 'px'}" @click="addCard" v-show="!isModal">
             <span class="iconfont icon-jia" ></span>
@@ -273,7 +273,7 @@ const toDetail = () =>{
         display: flex;
         flex-wrap: wrap;
         padding-top: 28px;
-        margin:  auto;
+        justify-content:stretch;
         .card-inner{
             margin: 6px;
             border: 1px solid transparent;

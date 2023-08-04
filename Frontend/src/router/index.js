@@ -1,11 +1,11 @@
 import { createRouter,createWebHistory } from'vue-router'
-import Layout from '../pages/Layout/index.vue'
-import Home from '../pages/Home/index.vue'
-import Treehole from '../pages/Treehole/index.vue'
-import Subscribe  from '../pages/Subscribe/index.vue'
-import Article from '../pages/Article/index.vue'
-import Test from '../pages/Test/index.vue'
-import Blanck from '../pages/blanck.vue'
+// import Layout from '../pages/Layout/index.vue'
+// import Home from '../pages/Home/index.vue'
+// import Treehole from '../pages/Treehole/index.vue'
+// import Subscribe  from '../pages/Subscribe/index.vue'
+// import Article from '../pages/Article/index.vue'
+// import Test from '../pages/Test/index.vue'
+// import Blanck from '../pages/blanck.vue'
 
 
 const router = createRouter({
@@ -13,31 +13,31 @@ const router = createRouter({
   routes:[
     {
       path:'/',
-      component: Layout,
+      component: ()=> import('../pages/Layout/index.vue'),
       children:[
         {
           path:'/',
-          component: Home
+          component: ()=> import('../pages/Home/index.vue'),
         },
         {
           path:'/treehole',
-          component: Treehole
+          component: ()=> import('../pages/Treehole/index.vue')
         },
         {
           path:'/subscribe',
-          component: Subscribe
+          component: ()=> import('../pages/Subscribe/index.vue')
         },
         {
           path:'/article',
-          component: Article
+          component: ()=> import('../pages/Article/index.vue')
         },
         {
           path:'/test',
-          component: Test
+          component: ()=> import('../pages/Test/index.vue')
         },
         {
           path:'/noinfo',
-          component:Blanck
+          component:()=> import('../pages/blanck.vue')
         }
       ]
     }

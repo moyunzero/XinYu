@@ -17,7 +17,7 @@ const handleClose = (done: () => void) => {
 </script>
 
 <template>
-    <div class="container">
+  <div class="container">
       <el-affix :offset="0" class="fixed">
           <el-row class="header" >
             <el-col :span="1"  class="logo">
@@ -65,7 +65,7 @@ const handleClose = (done: () => void) => {
           </span>
         </template>
       </el-dialog>
-    </div>
+  </div>
 </template>
 
 

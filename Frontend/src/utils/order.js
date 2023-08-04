@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const orderApi = axios.create({
-  baseURL: 'http://localhost:3000/order',
+  baseURL: 'http://soulpal.top:3006/order',
   timeout: 5000
 })
 orderApi.interceptors.request.use(

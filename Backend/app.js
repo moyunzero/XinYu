@@ -5,13 +5,13 @@
 // const app = express();
 
 // // 导入 cors 中间件
-// const cors = require('cors');
+const cors = require('cors');
 // const path = require('path')
 // // 解析表单数据中间件
 // app.use(express.urlencoded({ extended: false }))
 
 // // 将cors注册为全局中间件
-// app.use(cors());
+app.use(cors());
 
 // // 封装res.cc函数
 // app.use((req,res,next) => {

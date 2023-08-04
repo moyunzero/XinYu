@@ -10,7 +10,7 @@
 
 </template>
 
-<style scoped lang="scss">
+<style  lang="scss" scoped>
   h1,h3{
     display: flex;
     align-items: center;

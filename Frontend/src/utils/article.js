@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const articleApi = axios.create({
-  baseURL: 'http://localhost:3000/article',
+  baseURL: 'http://soulpal.top:3006/article',
   timeout: 5000
 })
 articleApi.interceptors.request.use(
